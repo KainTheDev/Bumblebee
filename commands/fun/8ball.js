@@ -9,7 +9,7 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-  run: async ({message, args}) => {
+  run: async ({client, message, args}) => {
     if (!args.length) {
       return message.reply('Please ask a question!');
     }
