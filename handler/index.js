@@ -38,11 +38,10 @@ module.exports = async (client) => {
         if (!file?.name) return;
         client.slashCommands.set(file.name, file);
 
-        if (["MESSAGE", "USER"].includes(file.type)) delete file.description;
+        if ([2, 3].includes(file.type)) delete file.description;
         arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
-        await client.application.commands.set([])
         await client.guilds.cache.find(guild => guild.name === "CLIMAX").commands.set(arrayOfSlashCommands);
       console.log("Slash commands loaded: ✅")
     });
