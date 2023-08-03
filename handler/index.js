@@ -42,7 +42,8 @@ module.exports = async (client) => {
         arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
-        await client.application.commands.set(arrayOfSlashCommands);
+        await client.application.commands.set([])
+        await client.guilds.cache.find(guild => guild.name === "CLIMAX").commands.set(arrayOfSlashCommands);
       console.log("Slash commands loaded: ✅")
     });
 };

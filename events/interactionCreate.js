@@ -1,6 +1,7 @@
 const client = require("../index");
 
 client.on("interactionCreate", async (interaction) => {
+    if(interaction.guild.name !== "CLIMAX") return;
     // Slash Command Handling
   const command = client.slashCommands.get(interaction.commandName);
   const args = [];

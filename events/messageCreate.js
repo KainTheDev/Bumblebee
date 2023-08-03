@@ -1,6 +1,7 @@
 const client = require("../index");
 
 client.on("messageCreate", async (message) => {
+    if(message.guild.name !== "CLIMAX") return;
     if (
         message.author.bot ||
         !message.guild ||
