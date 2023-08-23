@@ -1,6 +1,6 @@
 
 const { Client, GatewayIntentBits, Partials, Collection } = require("discord.js");
-
+const {textDatabase} = require("multi-purpose")
 const client = new Client({
     intents: [
   GatewayIntentBits.Guilds,
@@ -33,8 +33,10 @@ module.exports = client;
 client.commands = new Collection();
 client.slashCommands = new Collection();
 client.config = require("./config.json");
+client.db = new textDatabase("Bumblebee")
 
 // Initializing the project
 require("./handler")(client);
-
-client.login(client.config.token);
+client.db.get("token").then(token => {
+client.login(token);
+})
