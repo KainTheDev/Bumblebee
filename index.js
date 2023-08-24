@@ -37,6 +37,4 @@ client.db = new textDatabase("Bumblebee")
 
 // Initializing the project
 require("./handler")(client);
-client.db.get("token").then(token => {
-client.login(token);
-})
+client.login(process.env.token)
